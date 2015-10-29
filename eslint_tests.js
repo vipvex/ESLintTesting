@@ -50,18 +50,24 @@ function validateVariables(context) {
             // Validate variable existance
             if (varName in variables){
                 
-                //context.report(node: node, message: "Found variable decloration " + varName, data: { correct: true });
+                context.report({ node: node, message: "Found variable decloration " + varName, data: { correct: true } });
             
                 // Validate variable value
                 if (varVal == variables[varName])
                 {
-                    context.report(node, "Variable " + varName + " correctly set to " + varValue, data: { correct: true });
+                    context.report({ node: node, 
+                                    message: "Variable " + varName + " correctly set to " + varValue, 
+                                    data: { correct: true } });
                 }else{
-                    context.report(node, "Variable " + varName + " is not set to the correct value", data: { correct: false });
+                    context.report({ node: node, 
+                                     "Variable " + varName + " is not set to the correct value", 
+                                     data: { correct: false } });
                 }
             }else{
                 if (exclusive){
-                    context.report(node, "Found unneccesary variable decloration " + varName, data: { correct: false });
+                    context.report({ node: node, 
+                                     "Found unneccesary variable decloration " + varName, 
+                                     data: { correct: false } });
                 }
             }
         }
