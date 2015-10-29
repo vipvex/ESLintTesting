@@ -40,7 +40,7 @@ function validateVariables(context) {
     return {
         VariableDeclarator: function (node) {
             
-            console.log(context);
+            console.log(node);
             
             // Retreive the variable paramaters
             var variables = context.options[0]["variables"];
@@ -49,9 +49,9 @@ function validateVariables(context) {
             var varName = node.id.name;
             var varVal  = node.init.value;
         
-            console.log(variables);
             console.log(varName);
-            
+            console.log(variables);
+
             // Validate variable existance
             if (varName in variables){
                 
@@ -59,7 +59,7 @@ function validateVariables(context) {
                 
                 context.report({ node: node, 
                                  message: "Found variable decloration " + varName, 
-                                 data: { correct: true }, line: node.line });
+                                 data: { correct: true }, loc: node.line });
             
             
                 // Validate variable value
@@ -67,17 +67,17 @@ function validateVariables(context) {
                 {
                     context.report({ node: node, 
                                      message: "Variable " + varName + " correctly set to " + varValue, 
-                                     data: { correct: true }, line: node.line });
+                                     data: { correct: true }, loc: node.line });
                 }else{
                     context.report({ node: node, 
                                      message: "Variable " + varName + " is not set to the correct value", 
-                                     data: { correct: false }, line: node.line });
+                                     data: { correct: false }, loc: node.line });
                 }
             }else{
                 if (exclusive){
                     context.report({ node: node, 
                                      message: "Found unneccesary variable decloration " + varName, 
-                                     data: { correct: false }, line: node.line });
+                                     data: { correct: false }, loc: node.line });
                 }
             }
         }
