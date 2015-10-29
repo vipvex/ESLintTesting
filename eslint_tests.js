@@ -59,7 +59,8 @@ function validateVariables(context) {
                 
                 context.report({ 
                     node: node, 
-                    message: "Found unneccesary variable decloration " 
+                    message: "Found unneccesary variable decloration ",
+                    loc: ""
                 });
             
             
@@ -78,7 +79,8 @@ function validateVariables(context) {
                 if (exclusive){
                     context.report({ 
                         node: node, 
-                        message: "Found unneccesary variable decloration " 
+                        message: "Found unneccesary variable decloration ",
+                        loc: ""
                     });
                 }
             }
