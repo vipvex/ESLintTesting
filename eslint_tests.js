@@ -49,6 +49,8 @@ function validateVariables(context) {
             var varName = node.id.name;
             var varVal  = node.init.value;
         
+            console.log(variables);
+            console.log(varName);
             // Validate variable existance
             if (varName in variables){
                 
