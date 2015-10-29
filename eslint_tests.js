@@ -57,27 +57,19 @@ function validateVariables(context) {
                 
                 console.log("Got through");
                 
-                context.report(
-                    node, 
-                    "Found unneccesary variable decloration "
-                );
-            
+                assertOk(true, "", "Found variable " + varName);
             
                 // Validate variable value
                 if (varVal == variables[varName])
                 {
-                //    context.report({ node: node, 
-                //                     message: "Variable " + varName + " correctly set to " + varValue, 
-                //                     data: { correct: true }, location: node.line });
+                    assertOk(true, "", "Variable " + varName + " value set correctly to " + varVal);
                 }else{
-                //    context.report({ node: node, 
-                //                     message: "Variable " + varName + " is not set to the correct value", 
-                //                     data: { correct: false }, location: node.line });
+                    assertOk(true, "", "Variable " + varName + " value is set incorrectly");
                 }
             }else{
                 if (exclusive){
                     console.log("Bad");
-                    assertOk(false, "", "BAD BAD MAN")
+                    assertOk(true, "", "Variable " + varName + " not expected");
                 }
             }
         }
