@@ -36,7 +36,6 @@ function checkIfVarExists(context) {
                             }, 
                             exclusive: true] // Must only be these variables 
 */
-
 function validateVariables(context) {
     return {
         VariableDeclarator: function (node) {
@@ -48,25 +47,22 @@ function validateVariables(context) {
             var varName = node.id.name;
             var varVal  = node.init.value;
         
+            // Validate variable existance
             if (varName in variables){
-
-                context.report(node, "Found variable decloration: " + varName, data: { correct: true });
+                
+                context.report(node, "Found variable decloration " + varName, data: { correct: true });
             
+                // Validate variable value
                 if (varVal == variables[varName])
                 {
-                    context.report(node, "Variable " + varName + " correctly set to " + varName, data: { correct: true });
+                    context.report(node, "Variable " + varName + " correctly set to " + varValue, data: { correct: true });
+                }else{
+                    context.report(node, "Variable " + varName + " is not set to the correct value", data: { correct: false });
                 }
- 
-            }
-  
-            
-            // if exluisive check if var name matchest one of the variables
-            // check if var has value
-            // check if vars value matches with what is expected
-            
-            
-            if (!(varName == context.options[0])) {
-                context.report(node, "Variable not named myVar");
+            }else{
+                if (exclusive){
+                    context.report(node, "Found unneccesary variable decloration " + varName, data: { correct: false });
+                }
             }
         }
     };
