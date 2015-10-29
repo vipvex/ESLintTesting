@@ -77,10 +77,9 @@ function validateVariables(context) {
             }else{
                 if (exclusive){
                     console.log("Bad");
-                    context.report({ 
-                        node: node, 
-                        message: "Variable BAD BAD BAD!" + varName + " ", 
-                        data: { correct: false }
+                    context.report(
+                        node, 
+                        Variable BAD BAD BAD!" + varName + " "
                     });
                 }
             }
