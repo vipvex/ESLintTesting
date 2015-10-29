@@ -77,9 +77,11 @@ function validateVariables(context) {
             }else{
                 if (exclusive){
                     console.log("Bad");
-                    context.report( 
-                        node, 
-                        "Found unneccesary variable decloration ");
+                    context.report({ 
+                        node: node, 
+                        message: "Variable BAD BAD BAD!" + varName + " ", 
+                        data: { correct: false }
+                    });
                 }
             }
         }
