@@ -65,19 +65,19 @@ function validateVariables(context) {
                 // Validate variable value
                 if (varVal == variables[varName])
                 {
-                    context.report({ node: node, 
-                                     message: "Variable " + varName + " correctly set to " + varValue, 
-                                     data: { correct: true }, location: node.line });
+                //    context.report({ node: node, 
+                //                     message: "Variable " + varName + " correctly set to " + varValue, 
+                //                     data: { correct: true }, location: node.line });
                 }else{
-                    context.report({ node: node, 
-                                     message: "Variable " + varName + " is not set to the correct value", 
-                                     data: { correct: false }, location: node.line });
+                //    context.report({ node: node, 
+                //                     message: "Variable " + varName + " is not set to the correct value", 
+                //                     data: { correct: false }, location: node.line });
                 }
             }else{
                 if (exclusive){
-                    context.report({ node: node, 
-                                     message: "Found unneccesary variable decloration " + varName, 
-                                     data: { correct: false }, location: node.line });
+                //    context.report({ node: node, 
+                //                     message: "Found unneccesary variable decloration " + varName, 
+                //                     data: { correct: false }, location: node.line });
                 }
             }
         }
