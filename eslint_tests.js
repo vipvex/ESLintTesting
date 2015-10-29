@@ -76,8 +76,7 @@ function validateVariables(context) {
             }else{
                 if (exclusive){
                     context.report({ node: node, 
-                                     message: "Found unneccesary variable decloration " + varName, 
-                                     data: { correct: false }, location: node.line });
+                                     message: "Found unneccesary variable decloration " + varName };
                 }
             }
         }
