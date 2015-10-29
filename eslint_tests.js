@@ -9,10 +9,6 @@ function ifCurlyFormatting(context) {
     };
 };
 
-
-eslint.defineRule("if-curly-formatting", ifCurlyFormatting);
-
-
 function checkIfVarExists(context) {
     return {
         VariableDeclarator: function (node) {
@@ -27,4 +23,5 @@ function checkIfVarExists(context) {
     };
 };
 
+eslint.defineRule("if-curly-formatting", ifCurlyFormatting);
 eslint.defineRule("check-if-var-exists", checkIfVarExists);
