@@ -43,7 +43,7 @@ function validateVariables(context) {
             console.log(context);
             
             // Retreive the variable paramaters
-            var variables = context.options[0];
+            var variables = context.options[0]["variables"];
             var exclusive = context.options[1];
             
             var varName = node.id.name;
