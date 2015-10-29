@@ -39,23 +39,16 @@ function checkIfVarExists(context) {
 function validateVariables(context) {
     return {
         VariableDeclarator: function (node) {
-            
-            console.log(node);
-            
+
             // Retreive the variable paramaters
             var variables = context.options[0]["variables"];
             var exclusive = context.options[1];
             
             var varName = node.id.name;
             var varVal  = node.init.value;
-        
-            console.log(varName);
-            console.log(variables);
 
             // Validate variable existance
             if (varName in variables){
-                
-                console.log("Got through");
                 
                 assertOk(true, "", "Found variable " + varName);
             
@@ -68,7 +61,6 @@ function validateVariables(context) {
                 }
             }else{
                 if (exclusive){
-                    console.log("Bad");
                     assertOk(true, "", "Variable " + varName + " not expected");
                 }
             }
