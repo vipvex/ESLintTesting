@@ -1,3 +1,5 @@
+
+// Example
 function ifCurlyFormatting(context) {
     return {
         IfStatement: function (node) {
@@ -9,12 +11,41 @@ function ifCurlyFormatting(context) {
     };
 };
 
+
+// Config example: "check-if-var-exists": [2, "myVar"]
 function checkIfVarExists(context) {
     return {
         VariableDeclarator: function (node) {
-            console.log(node);
-            console.log(context.options[0]);
+            var varName = node.id.name;
+            if (!(varName == context.options[0])) {
+                context.report(node, "Variable not named myVar");
+            }
+        }
+    };
+};
 
+/* 
+    Config example: 
+    
+    "validate-variables" : [2, 
+                            "variables" : {
+                                "name" : "Jon Smith",
+                                "age"  : 12
+                                "debt" : 9001
+                                "description" : null
+                            }, 
+                            exclusive: true] // Must only be these variables 
+*/
+function validateVariables(context) {
+    return {
+        VariableDeclarator: function (node) {
+            
+            // check if exliusive
+            
+                // if exluisive check if var name matchest one of the variables
+                // check if var has value
+                // check if vars value matches with what is expected
+            
             var varName = node.id.name;
             if (!(varName == context.options[0])) {
                 context.report(node, "Variable not named myVar");
