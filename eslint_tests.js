@@ -52,6 +52,8 @@ function validateVariables(context) {
             // Validate variable existance
             if (varName in variables){
                 
+                console.log("Got through");
+                
                 context.report({ node: node, 
                                  message: "Found variable decloration " + varName, 
                                  data: { correct: true } });
