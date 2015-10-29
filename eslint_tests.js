@@ -58,17 +58,17 @@ function validateVariables(context) {
                 if (varVal == variables[varName])
                 {
                     context.report({ node: node, 
-                                    message: "Variable " + varName + " correctly set to " + varValue, 
-                                    data: { correct: true } });
+                                     message: "Variable " + varName + " correctly set to " + varValue, 
+                                     data: { correct: true } });
                 }else{
                     context.report({ node: node, 
-                                     "Variable " + varName + " is not set to the correct value", 
+                                     message: "Variable " + varName + " is not set to the correct value", 
                                      data: { correct: false } });
                 }
             }else{
                 if (exclusive){
                     context.report({ node: node, 
-                                     "Found unneccesary variable decloration " + varName, 
+                                     message: "Found unneccesary variable decloration " + varName, 
                                      data: { correct: false } });
                 }
             }
