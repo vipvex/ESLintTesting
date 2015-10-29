@@ -79,7 +79,7 @@ function validateVariables(context) {
                     console.log("Bad");
                     context.report(
                         node, 
-                        Variable BAD BAD BAD!" + varName + " "
+                        "Variable BAD BAD BAD!" + varName + " "
                     });
                 }
             }
