@@ -59,7 +59,7 @@ function validateVariables(context) {
                 
                 context.report({ node: node, 
                                  message: "Found variable decloration " + varName, 
-                                 data: { correct: true }, loc: node.line });
+                                 data: { correct: true }, location: node.line });
             
             
                 // Validate variable value
@@ -67,17 +67,17 @@ function validateVariables(context) {
                 {
                     context.report({ node: node, 
                                      message: "Variable " + varName + " correctly set to " + varValue, 
-                                     data: { correct: true }, loc: node.line });
+                                     data: { correct: true }, location: node.line });
                 }else{
                     context.report({ node: node, 
                                      message: "Variable " + varName + " is not set to the correct value", 
-                                     data: { correct: false }, loc: node.line });
+                                     data: { correct: false }, location: node.line });
                 }
             }else{
                 if (exclusive){
                     context.report({ node: node, 
                                      message: "Found unneccesary variable decloration " + varName, 
-                                     data: { correct: false }, loc: node.line });
+                                     data: { correct: false }, location: node.line });
                 }
             }
         }
