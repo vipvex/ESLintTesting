@@ -41,7 +41,7 @@ function validateVariables(context) {
         VariableDeclarator: function (node) {
 
             console.log(node);
-            console.log(context);
+            console.log(exclusive);
 
             // Retreive the variable paramaters
             var variables = context.options[0]["variables"];
