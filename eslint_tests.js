@@ -88,7 +88,7 @@ function validateVariables(context) {
 };
 
 function validateVariable(name, value){
-    config["rules"]["variables"][name] = value;
+    config["rules"]["validate-variables"][1]["variables"][name] = value;
 }
 
 function beforeESlintVerify(){
