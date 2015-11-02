@@ -108,7 +108,8 @@ function validatedExpectedVariablesDeclared(){
     console.log(expectedVariables);
     console.log(declaredVariables);
     for (var key in expectedVariables){
-        if (!declaredVariables[key]){
+        console.log(key);
+        if (key in declaredVariables == false){
             assertOk(false, "", "Expected " + key + " to be defined.");
         }
     }
