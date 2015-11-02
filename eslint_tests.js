@@ -40,7 +40,7 @@ function validateVariables(context) {
     return {
         VariableDeclarator: function (node) {
 
-            console.log(code);
+            console.log(node);
             console.log(context);
 
             // Retreive the variable paramaters
