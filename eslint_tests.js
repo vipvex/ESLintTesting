@@ -87,7 +87,7 @@ function validateVariables(context) {
     };
 };
 
-function validateVariable(name, value){
+function assertVariable(name, value){
     config["rules"]["validate-variables"][1]["variables"][name] = value;
 }
 
