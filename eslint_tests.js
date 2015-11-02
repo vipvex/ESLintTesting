@@ -1,3 +1,17 @@
+var config = {  "ecmaFeatures": {},
+                "parser": "espree",
+                "env": {
+                    "browser": false,
+                    "node": false,
+                    "amd": false,
+                    "mocha": false,
+                    "jasmine": false
+                },
+                
+                "rules": {
+                    "validate-variables" : [2, { variables : {}, "exclusive" : true }]
+                }
+            };
 
 // Example
 function ifCurlyFormatting(context) {
@@ -72,6 +86,10 @@ function validateVariables(context) {
         }
     };
 };
+
+function validateVariable(name, value){
+    config["rules"]["variables"]["name"] = value;
+}
 
 function onESlintCompleted(){
     validatedExpectedVariablesDeclared();
