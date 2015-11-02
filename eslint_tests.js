@@ -79,8 +79,10 @@ function onESlintCompleted(){
 
 // Finally check what variables were not defined
 function validatedExpectedVariablesDeclared(){
+    console.log(expectedVariables);
+    console.log(declaredVariables);
     for (var key in expectedVariables){
-        if (declaredVariables[key]){
+        if (!declaredVariables[key]){
             assertOk(false, "", "Expected " + key + " to be defined.");
         }
     }
