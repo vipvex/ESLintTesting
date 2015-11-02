@@ -40,9 +40,6 @@ function validateVariables(context) {
     return {
         VariableDeclarator: function (node) {
 
-            console.log(node);
-            
-
             // Retreive the variable paramaters
             var variables = context.options[0]["variables"];
             var exclusive = context.options[0]["exclusive"];
@@ -50,24 +47,21 @@ function validateVariables(context) {
             var varName = node.id.name;
             var varVal  = node.init.value;
 
-            console.log(exclusive);
-            console.log(varName);
-
             // Validate variable existance
             if (varName in variables){
                 
-                assertOk(true, "", "Found variable " + varName);
+                assertOk(true, "Found variable " + varName, "");
             
                 // Validate variable value
                 if (varVal == variables[varName])
                 {
-                    assertOk(true, "", "Variable " + varName + " value set correctly to " + varVal);
+                    assertOk(true, "Variable " + varName + " value set correctly to " + varVal, "");
                 }else{
-                    assertOk(true, "", "Variable " + varName + " value is set incorrectly");
+                    assertOk(false, "", "Variable " + varName + " value is set incorrectly");
                 }
             }else{
                 if (exclusive){
-                    assertOk(true, "", "Variable " + varName + " not expected");
+                    assertOk(false, "", "Variable " + varName + " not expected");
                 }
             }
         }
