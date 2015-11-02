@@ -73,4 +73,4 @@ function validateVariables(context) {
 
 eslint.defineRule("if-curly-formatting", ifCurlyFormatting);
 eslint.defineRule("check-if-var-exists", checkIfVarExists);
-eslint.defineRule("validate-variables",  validateVariables)
+eslint.defineRule("validate-variables",  validateVariables);
