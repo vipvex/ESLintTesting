@@ -41,7 +41,7 @@ function validateVariables(context) {
         VariableDeclarator: function (node) {
 
             console.log(node);
-            console.log(exclusive);
+            
 
             // Retreive the variable paramaters
             var variables = context.options[0]["variables"];
@@ -49,6 +49,9 @@ function validateVariables(context) {
             
             var varName = node.id.name;
             var varVal  = node.init.value;
+
+            console.log(exclusive);
+            console.log(varName);
 
             // Validate variable existance
             if (varName in variables){
