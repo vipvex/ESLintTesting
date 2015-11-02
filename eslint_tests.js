@@ -91,8 +91,16 @@ function validateVariable(name, value){
     config["rules"]["variables"]["name"] = value;
 }
 
-function onESlintCompleted(){
+function beforeESlintVerify(){
+    clearVariableValidations();
+}
+
+function afterESlintVerify(){
     validatedExpectedVariablesDeclared();
+}
+
+function clearVariableValidations(){
+    config["rules"]["variables"] = {};
 }
 
 // Finally check what variables were not defined
