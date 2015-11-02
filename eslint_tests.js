@@ -73,7 +73,7 @@ function validateVariables(context) {
     };
 };
 
-function onEslintCompleted(){
+function onESlintCompleted(){
     validatedExpectedVariablesDeclared();
 }
 
