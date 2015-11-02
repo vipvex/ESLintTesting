@@ -36,37 +36,55 @@ function checkIfVarExists(context) {
                             }, 
                             exclusive: true] // Must only be these variables 
 */
+
+var expectedVariables = {};
+var declaredVariables = {};
+
 function validateVariables(context) {
     return {
         VariableDeclarator: function (node) {
-
+            
             // Retreive the variable paramaters
-            var variables = context.options[0]["variables"];
+            expectedVariables = context.options[0]["variables"];
             var exclusive = context.options[0]["exclusive"];
             
             var varName = node.id.name;
             var varVal  = node.init.value;
 
             // Validate variable existance
-            if (varName in variables){
+            if (varName in expectedVariables){
                 
                 assertOk(true, "Found variable " + varName, "");
+                declaredVariables[varName] = undefined;
             
                 // Validate variable value
-                if (varVal == variables[varName])
-                {
+                if (varVal == expectedVariables[varName]){
                     assertOk(true, "Variable " + varName + " value set correctly to " + varVal, "");
+                    declaredVariables[varName] = varVal;
                 }else{
                     assertOk(false, "", "Variable " + varName + " value is set incorrectly");
                 }
             }else{
                 if (exclusive){
-                    assertOk(false, "", "Variable " + varName + " not expected");
+                    assertOk(false, "", "Variable " + varName + " is not an expected variable");
                 }
             }
         }
     };
 };
+
+function onEslintCompleted(){
+    validatedExpectedVariablesDeclared();
+}
+
+// Finally check what variables were not defined
+function validatedExpectedVariablesDeclared(){
+    for (var key in expectedVariables){
+        if (declaredVariables[key]){
+            assertOk(false, "", "Expected " + key + " to be defined.");
+        }
+    }
+}
 
 eslint.defineRule("if-curly-formatting", ifCurlyFormatting);
 eslint.defineRule("check-if-var-exists", checkIfVarExists);
