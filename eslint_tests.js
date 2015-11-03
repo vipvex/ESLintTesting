@@ -105,10 +105,7 @@ function clearVariableValidations(){
 
 // Finally check what variables were not defined
 function validatedExpectedVariablesDeclared(){
-    console.log(expectedVariables);
-    console.log(declaredVariables);
     for (var key in expectedVariables){
-        console.log(key);
         if (key in declaredVariables == false){
             assertOk(false, "", "Expected " + key + " to be defined.");
         }
